@@ -1,33 +1,40 @@
-<nav class="bg-white/80 backdrop-blur-md p-4 px-8 flex justify-between items-center sticky top-0 z-50 border-b border-amber-100">
-    <div class="flex items-center gap-3">
-        <img src="{{ asset('images/aliacookies.png') }}" class="w-10 h-10">
-        <h1 class="font-serif font-bold text-lg text-[#5D4037]">ALIACOOKIES</h1>
+<nav class="navbar">
+    <div class="navbar-brand">
+        <div class="brand-logo">
+            <img src="{{ asset('images/aliacookies.png') }}" alt="Alia Cookies Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="logo-fallback" style="display:none">🍪</div>
+        </div>
+        <span class="brand-name">Alia <em>Cookies</em></span>
     </div>
 
-    <ul class="flex space-x-8 font-bold text-[11px] uppercase tracking-widest text-[#5D4037]">
-        @php $u = request('username'); @endphp
-        <li class="relative group">
-            <a href="{{ route('dashboard', ['username' => $u]) }}" class="{{ request()->routeIs('dashboard') ? 'text-[#8B4513]' : '' }}">Dashboard</a>
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B4513] transition-all duration-300 group-hover:w-full {{ request()->routeIs('dashboard') ? 'w-full' : '' }}"></span>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+        <li>
+            <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Dashboard
+            </a>
         </li>
-        <li class="relative group">
-            <a href="{{ route('pengelolaan', ['username' => $u]) }}" class="{{ request()->routeIs('pengelolaan') ? 'text-[#8B4513]' : '' }}">Pengelolaan</a>
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B4513] transition-all duration-300 group-hover:w-full {{ request()->routeIs('pengelolaan') ? 'w-full' : '' }}"></span>
+        <li>
+            <a href="{{ route('pengelolaan') }}" class="{{ request()->routeIs('pengelolaan') ? 'active' : '' }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Pengelolaan
+            </a>
         </li>
-        <li class="relative group">
-            <a href="{{ route('profile', ['username' => request('username')]) }}">Profile</a>
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B4513] transition-all duration-300 group-hover:w-full {{ request()->routeIs('profile') ? 'w-full' : '' }}"></span>
+        <li>
+            <a href="{{ route('profile') }}" class="{{ request()->routeIs('profile') ? 'active' : '' }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Profile
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('logout') }}" class="nav-logout">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                Logout
+            </a>
         </li>
     </ul>
-
-    <div class="relative">
-        <button id="profileBtn" class="w-10 h-10 rounded-full bg-[#EBD9C8] flex items-center justify-center text-xl border-2 border-white shadow-sm overflow-hidden focus:outline-none transition hover:scale-105">
-            👤
-        </button>
-
-        <div id="profileMenu" class="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-amber-50 hidden overflow-hidden z-50">
-            <a href="{{ route('profile', ['username' => request('username')]) }}" class="block px-6 py-4 text-xs font-bold hover:bg-[#FDF5E6] transition text-[#5D4037]">👁️ Lihat Akun</a>
-            <a href="/" class="block px-6 py-4 text-xs font-bold text-red-500 hover:bg-red-50 transition border-t border-amber-50">🚪 Logout</a>
-        </div>
-    </div>
 </nav>

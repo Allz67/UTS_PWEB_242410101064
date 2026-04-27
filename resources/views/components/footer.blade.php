@@ -1,26 +1,47 @@
-<footer id="contact" class="bg-[#F3E5D8] text-warm-brown py-24 px-8 border-t border-amber-200">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 items-start">
-        <div class="space-y-6">
-            <h2 class="font-serif text-4xl font-bold tracking-tighter">ALIA COOKIES</h2>
-            <p class="opacity-60 text-sm leading-relaxed max-w-xs">Tasty in Every Bite. Menciptakan kebahagiaan melalui resep klasik yang dibuat dengan ketulusan.</p>
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <div class="footer-logo">
+                <img src="{{ asset('images/aliacookies.png') }}" alt="Alia Cookies Logo">
+                <h3>Alia Cookies</h3>
+            </div>
+            <p class="footer-desc">
+                Alia Cookies menghadirkan berbagai pilihan cookies handmade premium dengan cita rasa lezat, bahan berkualitas, dan tampilan menarik yang cocok untuk camilan harian, hadiah spesial, maupun hampers berbagai acara.
+            </p>
         </div>
 
-        <div class="flex flex-col space-y-6">
-            <span class="font-bold uppercase text-[10px] tracking-widest opacity-40">Akses Cepat Admin</span>
-            <div class="flex flex-col space-y-4 text-sm font-semibold">
-                <a href="#reports" class="hover:text-amber-800 transition">Dashboard Analitik</a>
-                <a href="#inventory" class="hover:text-amber-800 transition">Manajemen Inventaris</a>
-                <a href="customer.html" class="hover:text-amber-800 transition">Lihat Tampilan Toko</a>
-            </div>
+        <div class="footer-section">
+            <h4>Menu Navigasi</h4>
+            <ul class="footer-links">
+                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ route('pengelolaan') }}">Pengelolaan</a></li>
+                <li><a href="{{ route('profile') }}">Profile</a></li>
+                <li><a href="{{ route('login') }}">Logout</a></li>
+            </ul>
         </div>
 
-        <div class="flex flex-col space-y-6">
-            <span class="font-bold uppercase text-[10px] tracking-widest opacity-40">Media Sosial</span>
-            <div class="flex space-x-8 uppercase text-xs font-bold tracking-[0.3em]">
-                <a href="https://www.instagram.com/aliacookies.jbr?igsh=MWZ1NHFrMmV6eGkxZg==" class="hover:text-amber-400 transition">Instagram</a>
-                <a href="https://wa.me/6285648569562" class="hover:text-amber-400 transition">WhatsApp</a>
-            </div>
-            <p class="text-[10px] opacity-30 pt-10">© 2026 Alia Cookies Team. All rights reserved.</p>
+        <div class="footer-section">
+            <h4>Informasi Kontak</h4>
+            <p>Email: <a href="mailto:aliacookies@gmail.com">aliacookies@gmail.com</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/aliacookies.jbr?igsh=YmZhN3ZsZTBrZzVo" target="_blank">@aliacookies.jbr</a></p>
+            <p>WhatsApp: <a href="https://wa.me/6285648569562" target="_blank">+62 856-4856-9562</a></p>
+            <p>Jember, Indonesia</p>
         </div>
+
+        <div class="footer-section">
+            <h4>Jam Operasional</h4>
+            <p>Senin - Jumat : 08.00 - 20.00</p>
+            <p>Sabtu - Minggu : 09.00 - 21.00</p>
+            <p>Hari Besar Nasional : Menyesuaikan</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            © {{ date('Y') }} <strong>Alia Cookies</strong>. All Rights Reserved.
+            | Made with ♥
+        </p>
     </div>
 </footer>

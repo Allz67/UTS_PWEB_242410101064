@@ -1,14 +1,74 @@
-@extends('layouts.app') @section('content')
-<div class="max-w-md mx-auto bg-white p-10 rounded-3xl border border-amber-100 shadow-xl text-center">
-    <h2 class="font-serif text-3xl font-bold mb-2">Selamat Datang</h2>
-    <p class="text-sm text-gray-500 mb-8">Masuk ke Dashboard Alia Cookies</p>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Alia Cookies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body class="login-page">
 
-    <form action="{{ route('dashboard') }}" method="GET">
-        <input type="text" name="username" placeholder="Username Admin"
-               class="w-full p-4 rounded-2xl bg-[#F9F6F2] border-none outline-none mb-4" required>
-        <button type="submit" class="w-full bg-[#8B4513] text-white py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-[#5D4037] transition">
-            Masuk
-        </button>
-    </form>
-</div>
-@endsection
+    <div class="login-wrapper">
+        <div class="login-deco">
+            <div class="deco-content">
+                <div class="deco-badge">Admin Panel</div>
+                <h1 class="deco-title">Sweet <em>Moments</em><br>Start Here.</h1>
+                <p class="deco-sub">Kelola toko kue Anda dengan mudah, cepat, dan elegan.</p>
+                <div class="deco-cookies">
+                    <img src="{{ asset('images/cookies.png') }}" alt="Cookies" class="deco-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div class="deco-emoji" style="display:none">🍪</div>
+                </div>
+                <div class="deco-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-form-side">
+            <div class="login-box">
+                <div class="login-logo">
+                    <img src="{{ asset('images/aliacookies.png') }}" alt="Logo" class="login-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="login-logo-fallback" style="display:none">🍪</div>
+                </div>
+                <h2 class="login-title">Selamat Datang</h2>
+                <p class="login-sub">Masuk ke panel admin Alia Cookies</p>
+
+                @if(session('error'))
+                    <div class="alert-error">{{ session('error') }}</div>
+                @endif
+
+                <form action="{{ route('do.login') }}" method="POST" class="login-form" id="loginForm">
+                    @csrf
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Masukkan username..."
+                                autocomplete="off"
+                                required
+                            >
+                        </div>
+                        <span class="field-hint">Gunakan nama asli kamu</span>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="btnLogin">
+                        <span>Masuk ke Dashboard</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+
+                <p class="login-footer-text">© {{ date('Y') }} Alia Cookies — Admin Panel</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/admin.js') }}"></script>
+</body>
+</html>

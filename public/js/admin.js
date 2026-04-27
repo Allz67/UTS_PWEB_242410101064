@@ -1,84 +1,152 @@
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Alia Cookies Admin System Ready!');
+// GREETING based on current time
+function setGreeting() {
+    const hour = new Date().getHours();
+    let greeting = '';
 
-    // PROFIL
-    const profileBtn = document.getElementById('profileBtn');
-    const profileMenu = document.getElementById('profileMenu');
-
-    if (profileBtn && profileMenu) {
-        profileBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            profileMenu.classList.toggle('hidden');
-        });
-
-        document.addEventListener('click', function() {
-            profileMenu.classList.add('hidden');
-        });
+    if (hour >= 4 && hour < 11) {
+        greeting = 'Halo, Selamat Pagi ☀️';
+    } else if (hour >= 11 && hour < 15) {
+        greeting = 'Halo, Selamat Siang 🌤️';
+    } else if (hour >= 15 && hour < 19) {
+        greeting = 'Halo, Selamat Sore 🌅';
+    } else {
+        greeting = 'Halo, Selamat Malam 🌙';
     }
 
-    // GREETING
-    const greetingElement = document.querySelector('h1');
-    if (greetingElement && (greetingElement.innerText.includes('Selamat Datang') || greetingElement.innerText.includes('Hello'))) {
-        const hour = new Date().getHours();
-        let timeGreeting = "";
+    const greetEl = document.getElementById('greeting');
+    if (greetEl) greetEl.textContent = greeting;
+}
 
-        if (hour < 11) timeGreeting = "Selamat Pagi";
-        else if (hour < 15) timeGreeting = "Selamat Siang";
-        else if (hour < 19) timeGreeting = "Selamat Sore";
-        else timeGreeting = "Selamat Malam";
+// TABLE SEARCH
+function searchTable(tableId, keyword) {
+    const table = document.getElementById(tableId);
+    if (!table) return;
 
-        const currentText = greetingElement.innerText;
-        greetingElement.innerText = currentText.replace(/Selamat Datang|Hello/g, timeGreeting);
-    }
+    const rows = table.querySelectorAll('tbody tr');
+    const kw = keyword.toLowerCase().trim();
 
-    // SEARCH & FILTER (PENGELOLAAN)
-    const searchBar = document.getElementById('searchBar');
-    const filterCategory = document.getElementById('filterCategory');
-    const rows = document.querySelectorAll('.product-row');
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(kw) ? '' : 'none';
+    });
+}
 
-    function filterTable() {
-        if (!searchBar || !filterCategory) return;
+// TABLE FILTER BY STATUS
+function filterTableByStatus(tableId, colIndex, value) {
+    const table = document.getElementById(tableId);
+    if (!table) return;
 
-        const searchText = searchBar.value.toLowerCase();
-        const category = filterCategory.value.toLowerCase();
+    const rows = table.querySelectorAll('tbody tr');
+    const val = value.toLowerCase().trim();
 
-        rows.forEach(row => {
-            const productName = row.querySelector('.product-name').innerText.toLowerCase();
-            const productCategory = row.getAttribute('data-category').toLowerCase();
+    rows.forEach(row => {
+        if (!val) {
+            row.style.display = '';
+            return;
+        }
+        const cell = row.cells[colIndex];
+        if (!cell) return;
+        const text = cell.textContent.toLowerCase().trim();
+        row.style.display = text.includes(val) ? '' : 'none';
+    });
+}
 
-            const matchesSearch = productName.includes(searchText);
-            const matchesCategory = category === 'all' || productCategory === category;
+// NAVBAR TOGGLE
+function initNavToggle() {
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    if (!toggle || !links) return;
 
-            if (matchesSearch && matchesCategory) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
+    toggle.addEventListener('click', () => {
+        const isOpen = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
 
-    if(searchBar) searchBar.addEventListener('input', filterTable);
-    if(filterCategory) filterCategory.addEventListener('change', filterTable);
-
-    // FEEDBACK TABEL
-    const tableRows = document.querySelectorAll('tbody tr');
-    tableRows.forEach(row => {
-        row.addEventListener('click', function() {
-            tableRows.forEach(r => {
-                r.classList.remove('bg-[#FDF5E6]');
-                r.style.backgroundColor = '';
-            });
-            this.style.backgroundColor = '#FDF5E6';
-        });
+        // Animate hamburger
+        const spans = toggle.querySelectorAll('span');
+        if (isOpen) {
+            spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+            spans[1].style.opacity   = '0';
+            spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+        } else {
+            spans[0].style.transform = '';
+            spans[1].style.opacity   = '';
+            spans[2].style.transform = '';
+        }
     });
 
-    // LOGOUT
-    const logoutLinks = document.querySelectorAll('a[href="/"]');
-    logoutLinks.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            if(!confirm('Apakah kamu yakin ingin keluar dari Dapur Alia Cookies?')) {
-                e.preventDefault();
-            }
-        });
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!toggle.contains(e.target) && !links.contains(e.target)) {
+            links.classList.remove('open');
+            const spans = toggle.querySelectorAll('span');
+            spans[0].style.transform = '';
+            spans[1].style.opacity   = '';
+            spans[2].style.transform = '';
+        }
     });
+}
+
+// LOGIN FORM — Button loading state
+function initLoginForm() {
+    const form   = document.getElementById('loginForm');
+    const btn    = document.getElementById('btnLogin');
+    const input  = document.getElementById('username');
+    if (!form || !btn) return;
+
+    form.addEventListener('submit', (e) => {
+        const val = input ? input.value.trim() : '';
+        if (!val) {
+            e.preventDefault();
+            input.style.borderColor = 'var(--rose-deep)';
+            input.focus();
+            return;
+        }
+        btn.innerHTML = '<span>Masuk...</span>';
+        btn.disabled = true;
+    });
+
+    if (input) {
+        input.addEventListener('input', () => {
+            input.closest('.input-wrapper').style.borderColor = '';
+        });
+    }
+}
+
+// STAT CARDS — Animate numbers on load
+function animateNumbers() {
+    const els = document.querySelectorAll('.stat-value');
+    els.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    });
+
+    // Stagger reveal
+    setTimeout(() => {
+        els.forEach((el, i) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, i * 80);
+        });
+    }, 150);
+}
+
+// TABLE ROWS — Fade in
+function animateTableRows() {
+    const rows = document.querySelectorAll('.data-table tbody tr');
+    rows.forEach((row, i) => {
+        row.style.opacity = '0';
+        row.style.transition = `opacity 0.3s ease ${i * 40}ms`;
+        setTimeout(() => { row.style.opacity = '1'; }, 100 + i * 40);
+    });
+}
+
+// INIT — Run on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    setGreeting();
+    initNavToggle();
+    initLoginForm();
+    animateNumbers();
+    animateTableRows();
 });
