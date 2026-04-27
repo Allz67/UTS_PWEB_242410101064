@@ -150,7 +150,9 @@ untuk membuat struktur project lebih rapi, reusable, dan tidak perlu menulis kod
 ## Author
 
 Nama: Thalia Salsabilla Kufanda
+
 NIM: 242410101064
+
 Kelas: A
 
 ---
