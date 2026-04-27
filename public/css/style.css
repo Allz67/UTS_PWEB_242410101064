@@ -1266,3 +1266,16 @@ body.login-page {
     .stats-grid, .stats-3 { grid-template-columns: 1fr; }
     .stat-card { padding: 1.1rem; }
 }
+
+/* Form Errors */
+.error-message {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 6px;
+    display: block;
+}
+
+.input-error {
+    border: 1px solid #dc2626 !important;
+    background: #fff5f5;
+}

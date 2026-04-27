@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="page-wrapper">
-    // Page Header
+
     <div class="page-header">
         <div>
             <p class="greeting" id="greeting">Halo, Selamat Pagi 👋</p>
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    // Stat Cards
+
     <div class="stats-grid">
         <div class="stat-card stat-green">
             <div class="stat-icon">
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    // Chart Section
+
     <div class="section-grid">
         <div class="card chart-card">
             <div class="card-header">
@@ -119,7 +119,6 @@
         </div>
     </div>
 
-    // Transaction Table
     <div class="card table-card">
         <div class="card-header">
             <h2 class="card-title">Transaksi Terakhir</h2>

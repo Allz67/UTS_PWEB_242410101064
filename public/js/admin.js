@@ -150,3 +150,31 @@ document.addEventListener('DOMContentLoaded', () => {
     animateNumbers();
     animateTableRows();
 });
+
+// LOGIN FORM
+document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("loginForm");
+    const username = document.getElementById("username");
+    const usernameError = document.getElementById("usernameError");
+
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (e) {
+            let valid = true;
+
+            usernameError.textContent = "";
+            username.classList.remove("input-error");
+
+            if (username.value.trim() === "") {
+                e.preventDefault();
+                valid = false;
+
+                usernameError.textContent = "Username wajib diisi!";
+                username.classList.add("input-error");
+            }
+
+            if (!valid) {
+                username.focus();
+            }
+        });
+    }
+});

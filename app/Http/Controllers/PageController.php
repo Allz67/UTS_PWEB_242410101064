@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function splash()
+    {
+        return view('splash');
+    }
+
     public function login()
     {
         return view('login');
@@ -60,9 +65,7 @@ class PageController extends Controller
             ['kode' => 'PRD-005', 'nama' => 'Putri Salju',      'kategori' => 'Cookies', 'stok' => 0,   'satuan' => 'Box', 'harga' => 45000,  'status' => 'Habis'],
             ['kode' => 'PRD-006', 'nama' => 'Mini Delight Hampers',   'kategori' => 'Hampers', 'stok' => 18,  'satuan' => 'Pcs', 'harga' => 250000, 'status' => 'Tersedia'],
             ['kode' => 'PRD-007', 'nama' => 'Twin Delight Hampers',      'kategori' => 'Hampers', 'stok' => 5,   'satuan' => 'Pcs', 'harga' => 200000, 'status' => 'Menipis'],
-            ['kode' => 'PRD-008', 'nama' => 'Premium Gift Box',     'kategori' => 'Hampers', 'stok' => 0,   'satuan' => 'Pcs', 'harga' => 350000, 'status' => 'Habis'],
             ['kode' => 'PRD-009', 'nama' => 'Coklat Kenari','kategori' => 'Hampers','stok' => 22,  'satuan' => 'Pcs', 'harga' => 280000, 'status' => 'Tersedia'],
-            ['kode' => 'PRD-010', 'nama' => 'Rainbow Cookies',      'kategori' => 'Cookies', 'stok' => 3,   'satuan' => 'Box', 'harga' => 50000,  'status' => 'Menipis'],
         ];
 
         $stokStats = [
@@ -97,9 +100,9 @@ class PageController extends Controller
         return view('profile', compact('username', 'user'));
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        session()->forget('username');
+        $request->session()->flush();
         return redirect()->route('login');
     }
 }
