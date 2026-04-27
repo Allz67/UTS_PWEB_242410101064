@@ -1,0 +1,53 @@
+/* Custom Colors & Variables */
+:root {
+    --cream: #FDF5E6;
+    --warm-brown: #5D4037;
+    --accent-brown: #8B4513;
+}
+
+/* Base Styling */
+body {
+    background-color: var(--cream);
+    color: var(--warm-brown);
+    scroll-behavior: smooth;
+}
+
+/* Animasi Hover untuk Card Produk */
+.product-card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(139, 69, 19, 0.1);
+}
+
+/* Styling Tabel agar lebih manis */
+table {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+thead tr {
+    background-color: var(--warm-brown) !important;
+}
+
+/* Custom Scrollbar agar estetik */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-brown);
+    border-radius: 10px;
+}
+
+/* Link Active State */
+.nav-link-active {
+    border-bottom: 2px solid var(--accent-brown);
+    color: var(--accent-brown);
+}
