@@ -1,58 +1,156 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Alia Cookies – Admin Panel Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Deskripsi Project
 
-## About Laravel
+Alia Cookies adalah website admin panel untuk membantu pengelolaan toko cookies handmade dan hampers agar lebih mudah, cepat, dan terstruktur.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Website ini dibuat untuk memenuhi tugas Ujian Tengah Semester (UTS) mata kuliah Pemrograman Web menggunakan framework Laravel dengan konsep MVC (Model View Controller) serta Blade Engine sebagai template frontend.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Tema website yang dipilih adalah sistem manajemen admin toko kue yang mencakup pengelolaan penjualan, monitoring transaksi, pengelolaan stok produk, dan informasi profile admin.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Fitur Utama
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Splash Screen
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Saat pertama membuka website, user akan melihat halaman loading screen sebagai tampilan pembuka sebelum masuk ke halaman login.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 2. Login Page
 
-## Agentic Development
+User melakukan login dengan memasukkan username untuk masuk ke sistem admin.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 3. Dashboard
 
-```bash
-composer require laravel/boost --dev
+Halaman dashboard menampilkan:
 
-php artisan boost:install
+* Greeting sesuai waktu (Selamat Pagi / Siang / Sore)
+* Nama user yang login
+* Statistik penjualan
+* Total pendapatan
+* Total pesanan
+* Produk terjual
+* Pelanggan aktif
+* Grafik penjualan
+* Tabel transaksi terakhir customer
+* Fitur pencarian transaksi
+
+### 4. Pengelolaan Stok
+
+Halaman pengelolaan berisi:
+
+* Total stok produk
+* Stok menipis
+* Stok habis
+* Chart perbandingan stok cookies dan hampers
+* Progress status stok produk
+* Tabel data stok
+* Search produk
+* Filter kategori dan status produk
+
+### 5. Profile
+
+Halaman profile menampilkan:
+
+* Nama admin
+* Role admin
+* Email
+* Nomor HP
+* Lokasi
+* Status akun
+* Informasi sesi login
+* Logout dengan popup konfirmasi
+
+---
+
+## Teknologi yang Digunakan
+
+* Laravel Framework
+* Blade Template Engine
+* HTML
+* CSS
+* JavaScript
+* Chart.js
+
+---
+
+## Konsep MVC
+
+Project ini menggunakan konsep MVC:
+
+### Model
+
+Mengatur data yang digunakan dalam sistem.
+
+### View
+
+Menampilkan tampilan halaman website.
+
+### Controller
+
+Menghubungkan data dan tampilan.
+
+Alur kerja website:
+
+```text
+Route → Controller → View
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## Struktur Blade Engine
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Website ini menggunakan:
 
-## Code of Conduct
+* `@extends`
+* `@section`
+* `@yield`
+* `@include`
+* `x-component`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+untuk membuat struktur project lebih rapi, reusable, dan tidak perlu menulis kode berulang.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Screenshot Website
 
-## License
+### Splash Screen
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/63514bf1-fdfd-4952-9907-ddedcfce6dc0" />
+
+---
+
+### Login Page
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/068829b2-e336-48e3-a749-4254236c8762" />
+
+---
+
+### Dashboard
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4d65927b-48ad-48d9-8dd7-cf99ba38486d" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/967e3094-d29f-4f0f-ac2b-0934347b1ad8" />
+
+---
+
+### Pengelolaan Stok
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1789794e-066e-4cef-9231-07f689e9f02c" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/64374e39-d087-4249-8c18-f8ffcbd01db3" />
+
+---
+
+### Profile
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1f6ce8cf-01a8-4fe8-8658-de876d9efb97" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/984c6915-9a23-4c44-96d4-3161c2fd47ef" />
+
+---
+
+## Author
+
+Nama: Thalia Salsabilla Kufanda
+NIM: 242410101064
+Kelas: A
+
+---
